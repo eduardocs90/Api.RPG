@@ -1,0 +1,17 @@
+D:\Dev\API Treino\ApiPrimal\InfraData\bin\Debug\net8.0\InfraData.deps.json
+D:\Dev\API Treino\ApiPrimal\InfraData\bin\Debug\net8.0\InfraData.runtimeconfig.json
+D:\Dev\API Treino\ApiPrimal\InfraData\bin\Debug\net8.0\InfraData.dll
+D:\Dev\API Treino\ApiPrimal\InfraData\bin\Debug\net8.0\InfraData.pdb
+D:\Dev\API Treino\ApiPrimal\InfraData\bin\Debug\net8.0\Domain.dll
+D:\Dev\API Treino\ApiPrimal\InfraData\bin\Debug\net8.0\Domain.pdb
+D:\Dev\API Treino\ApiPrimal\InfraData\obj\Debug\net8.0\InfraData.csproj.AssemblyReference.cache
+D:\Dev\API Treino\ApiPrimal\InfraData\obj\Debug\net8.0\InfraData.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\API Treino\ApiPrimal\InfraData\obj\Debug\net8.0\InfraData.AssemblyInfoInputs.cache
+D:\Dev\API Treino\ApiPrimal\InfraData\obj\Debug\net8.0\InfraData.AssemblyInfo.cs
+D:\Dev\API Treino\ApiPrimal\InfraData\obj\Debug\net8.0\InfraData.csproj.CoreCompileInputs.cache
+D:\Dev\API Treino\ApiPrimal\InfraData\obj\Debug\net8.0\InfraData.csproj.Up2Date
+D:\Dev\API Treino\ApiPrimal\InfraData\obj\Debug\net8.0\InfraData.dll
+D:\Dev\API Treino\ApiPrimal\InfraData\obj\Debug\net8.0\refint\InfraData.dll
+D:\Dev\API Treino\ApiPrimal\InfraData\obj\Debug\net8.0\InfraData.pdb
+D:\Dev\API Treino\ApiPrimal\InfraData\obj\Debug\net8.0\InfraData.genruntimeconfig.cache
+D:\Dev\API Treino\ApiPrimal\InfraData\obj\Debug\net8.0\ref\InfraData.dll
