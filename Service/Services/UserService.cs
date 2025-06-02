@@ -47,22 +47,23 @@ namespace Service.Services
 
         public async Task<ExceptionManager<ResponseUserDTO>> Create(UserDTO body)
         {
-            if (!UserUtils.IsValidUserDTO(body)) return ExceptionManager.NotAcceptable<ResponseUserDTO>("campos obrigatórios não preenchidos");
-            if (!UserUtils.VerifyDocument(body.Document)) return ExceptionManager.BadRequest<ResponseUserDTO>("cpf inválido");
-            if (!UserUtils.VerifyEmail(body.Email) || !UserUtils.VerifyPassword(body.Password))
+            if (!UserUtils.IsValidUserDTO(body)) return ExceptionManager.BadRequest<ResponseUserDTO>("campos obrigatórios não preenchidos");
+            if (!UserUtils.VerifyEmail(body.Email))
             {
                 return
                 ExceptionManager.BadRequest<ResponseUserDTO>("email e senha denvem ter formato válido");
             }
+            if (!UserUtils.VerifyPassword(body.Password))
+                return ExceptionManager.BadRequest<ResponseUserDTO>("A senha deve conter de 8 a 20 caracter, com ao  menos uma Letra maiúscula, uma minuscula, um caracter especial e um numero");
             var result = await _userRepository.Create(_mapper.Map<User>(body));
             return ExceptionManager.Created(_mapper.Map<ResponseUserDTO>(result));
         }
 
         public async Task<ExceptionManager<ResponseUserDTO>> Update(UserUpdateDTO body)
         {
+            if (!UserUtils.VerifyIdUser(body.Id)) return ExceptionManager.BadRequest<ResponseUserDTO>("id inválido!");
             if (!UserUtils.IsValidUserUpdateDTO(body)) return ExceptionManager.BadRequest<ResponseUserDTO>("há campos obrigatórios não preenchidos");
-            if (!UserUtils.VerifyIdUser(body.Id)) return ExceptionManager.NotAcceptable<ResponseUserDTO>("id inválido!");
-            if (!UserUtils.VerifyDocument(body.Document)) return ExceptionManager.NotAcceptable<ResponseUserDTO>("CPF inválido!");
+            if (!UserUtils.VerifyDocument(body.Document)) return ExceptionManager.BadRequest<ResponseUserDTO>("CPF inválido!");
             var user = await _userRepository.FindByIdForUpdate(body.Id);
             if (user == null) return ExceptionManager.NotFound<ResponseUserDTO>("usuário não encontrado!");
             user = _mapper.Map<UserUpdateDTO, User>(body, user);
@@ -83,14 +84,14 @@ namespace Service.Services
         {
             if (loginDTO == null) return ExceptionManager.BadRequest<ResponseLoginDTO>("Os campos devem ser preenchidos");
             if (!UserUtils.VerifyEmail(loginDTO.Email) || !UserUtils.VerifyPassword(loginDTO.Password))
-                return ExceptionManager.BadRequest<ResponseLoginDTO>("Email ou Senha incorretos");
+                return ExceptionManager.Unauthorized<ResponseLoginDTO>("Email ou/e senha incorretos");
             var user = await _userRepository.Login(loginDTO.Email, loginDTO.Password);
             if (user == null) return ExceptionManager.NotFound<ResponseLoginDTO>("Não exite usuário com este email e/ou senha");
             var responseUserDTO = _mapper.Map<ResponseUserDTO>(user);
 
             var tokenData = _tokenGenerator.Generator(user);
             if (tokenData == null)
-                return ExceptionManager.NotAcceptable<ResponseLoginDTO>("Erro ao gerar token");
+                return ExceptionManager.InternalServerError<ResponseLoginDTO>("Erro ao gerar token");
 
             var accessToken = (string)tokenData.GetType().GetProperty("acess_token").GetValue(tokenData, null);
 

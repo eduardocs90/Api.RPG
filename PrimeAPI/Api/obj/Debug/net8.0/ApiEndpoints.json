@@ -92,7 +92,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "equipment",
+        "Name": "body",
         "Type": "Service.Dto.EquipmentDto.EquipmentDTO",
         "IsRequired": true
       }
@@ -149,18 +149,8 @@
   },
   {
     "ContainingType": "Api.Controllers.UserController",
-    "Method": "FindAll",
-    "RelativePath": "api/User",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Api.Controllers.UserController",
     "Method": "Create",
-    "RelativePath": "api/User",
+    "RelativePath": "api/User/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -175,24 +165,8 @@
   },
   {
     "ContainingType": "Api.Controllers.UserController",
-    "Method": "Update",
-    "RelativePath": "api/User",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "body",
-        "Type": "Service.Dto.UserDto.UserUpdateDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Api.Controllers.UserController",
     "Method": "Delete",
-    "RelativePath": "api/User",
+    "RelativePath": "api/User/delete/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -200,15 +174,25 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "Api.Controllers.UserController",
+    "Method": "FindAll",
+    "RelativePath": "api/User/find-all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.UserController",
     "Method": "FindByID",
-    "RelativePath": "api/User/{id}",
+    "RelativePath": "api/User/find-Id/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -232,6 +216,22 @@
       {
         "Name": "login",
         "Type": "Service.Dto.UserDto.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.UserController",
+    "Method": "Update",
+    "RelativePath": "api/User/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "Service.Dto.UserDto.UserUpdateDTO",
         "IsRequired": true
       }
     ],

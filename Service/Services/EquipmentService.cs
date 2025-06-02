@@ -35,8 +35,8 @@ namespace Service.Services
 
         public async Task<ExceptionManager<EquipmentDTO>> Create(EquipmentDTO body)
         {
-
             var fields = EquipmentUtils.ValidationEquipmentCreate(body);
+            if (fields.Validation == false) return ExceptionManager.BadRequest<EquipmentDTO>(fields.Message);
             var result = await _equipmentRepository.Create(_mapper.Map<Equipment>(body));
             return ExceptionManager.Created(_mapper.Map<EquipmentDTO>(result));
         }
