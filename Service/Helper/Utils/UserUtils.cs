@@ -20,7 +20,7 @@ namespace Service.Helper.Utils
 
         public static bool VerifyPassword(string password)
         {
-            // Expressão regular para uma senha forte de 8 a 20 caracter, Com ao  menos uma Letra maiúscula, uma minuscula, caracter especial e um numro
+            // Expressão regular para uma senha forte de 8 a 20 caracter, Com ao  menos uma Letra maiúscula, uma minuscula, caracter especial e um numero
 
             Regex passwordRegex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$");
 
@@ -76,8 +76,7 @@ namespace Service.Helper.Utils
 
             if (
                 user.Name == null ||
-                user.Email == null ||
-                user.Document == null)
+                user.Email == null )
             {
                 return false;
             }
@@ -93,8 +92,7 @@ namespace Service.Helper.Utils
             if (
                 user.Name == null ||
                 user.Email == null ||
-                user.Password == null ||
-                user.Document == null)
+                user.Password == null )
             {
                 return false;
             }

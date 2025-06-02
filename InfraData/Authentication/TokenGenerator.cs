@@ -14,6 +14,7 @@ namespace InfraData.Authentication
             var claims = new List<Claim> {
             new Claim("Email", user.Email),
             new Claim("Name", user.Name),
+            new Claim("role", user.Role.ToString()),
             new Claim("Id", user.Id.ToString())
         };
 

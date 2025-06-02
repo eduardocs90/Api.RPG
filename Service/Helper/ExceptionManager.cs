@@ -33,6 +33,7 @@
         public static ExceptionManager<T> NotAcceptable<T>(string message) => new() { Code = 406, Message = message };
         public static ExceptionManager<T> Ok<T>(T Data) => new() { Code = 200, Data = Data };
         public static ExceptionManager<T> Created<T>(T Data) => new() { Code = 201, Data = Data };
+        public static ExceptionManager<T> InternalServerError<T>(string message) => new() { Code = 500, Message = message };
     }
     public class ExceptionManager<T> : ExceptionManager
     {
